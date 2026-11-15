@@ -1,0 +1,66 @@
+@font-face { font-family: Geist; src: url('./assets/fonts/geist-sans.woff2') format('woff2'); font-weight: 100 900; font-display: swap; }
+:root {
+  color-scheme: light;
+  background: #eae7df;
+  font-family: Geist, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+main {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(ellipse at 43% 30%, #f5f2eb 0%, #eeebe3 54%, #e7e4da 100%);
+}
+.installation {
+  position: relative;
+  width: min(95vw, 518px, 93vh);
+  width: min(95vw, 518px, 93svh);
+}
+.receiver { width: 100%; aspect-ratio: 1.12; position: relative; isolation: isolate; }
+#glass, #still { width: 100%; height: 100%; display: block; position: absolute; inset: 0; }
+#glass { opacity: 0; transition: opacity .16s ease; }
+#still { background: url('./assets/receiver.webp') center / 100% 100% no-repeat; }
+.has-webgl #glass { opacity: 1; }
+.has-webgl #still { visibility: hidden; }
+.screen-target {
+  position: absolute; display: block;
+  top: 10.5%; left: 23.2%; width: 53.6%; height: 77.7%;
+  clip-path: polygon(0 0,100% 0,100% 66%,94% 66%,94% 87%,88% 87%,88% 100%,12% 100%,12% 87%,6% 87%,6% 66%,0 66%);
+  color: inherit; background: transparent; border: 0; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.screen-target:focus-visible { outline: 0; }
+.screen-target:focus-visible::after {
+  content: ""; position: absolute; inset: 7% 8% 40%;
+  border: 2px solid #b0ccba; border-radius: 3%;
+}
+.controls {
+  position: absolute; top: 95%; left: 50%; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 3px; color: #787669;
+}
+.controls :is(a,button) {
+  color: inherit; background: transparent; border: 0; padding: 0;
+  height: 34px; width: 32px; display: grid; place-items: center;
+  border-radius: 50%; cursor: pointer; touch-action: manipulation;
+}
+.controls svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.35; stroke-linecap: round; stroke-linejoin: round; }
+.controls :is(a,button):focus-visible { outline: 1px solid #68695d; outline-offset: 1px; }
+.controls :is(a,button):hover, .controls :is(a,button):focus-visible { color: #242923; background: #74705d14; }
+.controls :is(a,button):active { background: #74705d26; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; clip-path: inset(50%); overflow: hidden; white-space: nowrap; }
+@media (pointer: coarse) { .controls { gap: 0; } .controls :is(a,button) { width: 43px; height: 44px; } }
+@media (max-height: 420px) { .installation { width: min(77vw, 80svh); } .controls { top: 93%; } }
+@media (prefers-reduced-motion: reduce) { #glass { transition: none; } }
+.flat-picture {
+  position: absolute; overflow: hidden; border-radius: 4% / 6%;
+  transform-origin: 0 0;
+  pointer-events: none; background: #0c1110;
+}
+.flat-picture canvas { width: 100%; height: 100%; display: block; }
+.flat-picture::after {
+  content: ""; position: absolute; inset: 0;
+  background: repeating-linear-gradient(0deg, transparent 0 2px, #13181021 2px 3px);
+  box-shadow: inset 0 0 9px 3px #17191780;
+}

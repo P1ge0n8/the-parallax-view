@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f8f7f2">
+  <title>关于我们 · 視差之見</title>
+  <link rel="icon" href="./assets/icon.png">
+  <link rel="preload" href="./assets/fonts/geist-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./src/rail-track.css">
+  <link rel="stylesheet" href="./src/publication.css">
+  <link rel="stylesheet" href="./src/section-motion.css">
+  <link rel="stylesheet" href="./src/podcast-stage.css">
+  <link rel="stylesheet" href="./passage.css">
+  <script src="./passage.js" data-page="publication"></script>
+</head>
+<body data-passage-surface>
+  <a class="skip-link" href="#publication">跳到正文</a>
+  <header class="mast">
+    <div class="mast-inner">
+      <a class="brand" href="./" data-passage aria-label="視差之見 · 电视首页">
+        <img src="./assets/station.webp" alt="" width="48" height="48">
+        <span class="brand-type"><b>視差之見</b><span lang="en">The Parallax View</span></span>
+      </a>
+      <div class="languages">
+        <div class="cs-panel" role="combobox" tabindex="0" aria-haspopup="listbox" aria-controls="language-options" aria-expanded="false" aria-label="切换语言，简体中文">
+          <span class="cs-pointer" aria-hidden="true"></span>
+          <span class="cs-highlight" aria-hidden="true"></span>
+          <div class="cs-list" id="language-options" role="listbox" aria-label="切换语言"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="spread">
+    <aside class="index">
+      <div id="rail-host"></div>
+      <a class="return-tv" href="./" data-passage>
+        <svg width="15" height="15" viewBox="0 0 18 18" aria-hidden="true"><path d="m7.5 4-5 5 5 5M3 9h12"/></svg>
+        <span>返回电视</span>
+      </a>
+    </aside>
+    <main id="publication" tabindex="-1">
+      <section id="about" class="page" aria-labelledby="about-title">
+        <h1 class="section-head" id="about-title">关于我们</h1>
+        <div class="about-opening">
+          <p class="statement"></p>
+          <div class="about-copy"></div>
+        </div>
+        <div class="still-pair">
+          <div class="still-wide"><img src="./assets/about-portrait.jpg" width="1440" height="955" alt="戴墨镜的人在街上望向右方。"></div>
+          <div class="still-close"><img src="./assets/about-hand.jpg" width="1440" height="955" alt="戴戒指的手夹着一支烟。"></div>
+        </div>
+        <div class="contributors">
+          <h3 class="small-title"></h3>
+          <ul class="hosts"></ul>
+        </div>
+      </section>
+      <section id="podcast" class="page" aria-labelledby="podcast-title" hidden>
+        <h1 class="section-head" id="podcast-title">播客</h1>
+        <div id="podcast-host"></div>
+      </section>
+      <section id="articles" class="page" aria-labelledby="articles-title" hidden>
+        <h1 class="section-head" id="articles-title">文章</h1>
+        <p class="article-status"></p>
+      </section>
+      <section id="contact" class="page" aria-labelledby="contact-title" hidden>
+        <h1 class="section-head" id="contact-title">联系我们</h1>
+        <p class="contact-intro"></p>
+        <!-- Profile card interaction adapted from TamaniPhiri on Uiverse.io. -->
+        <div class="contact-card-slot">
+          <div class="contact-card">
+            <button type="button" class="contact-card-trigger" aria-expanded="false" aria-controls="contact-card-social">
+              <img class="contact-card-avatar" src="./assets/station.webp" width="64" height="64" alt="">
+              <span class="contact-card-name" lang="zh-Hant">視察之見</span>
+              <span class="contact-card-handle" lang="en">@TheParallaxView</span>
+            </button>
+            <div id="contact-card-social" class="contact-card-social" inert>
+              <div class="contact-card-pill">
+                <a data-platform="redNote" target="_blank" rel="noopener noreferrer"><img src="./assets/social/rednote.webp" width="196" height="71" alt=""></a>
+                <a data-platform="xiaoyuzhou" target="_blank" rel="noopener noreferrer"><img src="./assets/social/xiaoyuzhou.webp" width="132" height="103" alt=""></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="./src/publication.js"></script>
+</body>
+</html>

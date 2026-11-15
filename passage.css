@@ -1,0 +1,11 @@
+@media (prefers-reduced-motion: no-preference) {
+  :root:is(.tv-departing, .tv-arrival-pending, .tv-arriving) { background: #f8f7f2; }
+  .tv-arrival-pending [data-passage-surface] { opacity: 0; }
+  .tv-arriving [data-passage-surface] {
+    animation: resolve-picture 570ms cubic-bezier(.18,.64,.25,1) both;
+  }
+  @keyframes resolve-picture {
+    from { opacity: 0; filter: blur(8px); }
+    to { opacity: 1; filter: blur(0); }
+  }
+}

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#e9e6dc">
+  <title>視差之見 · 电视</title>
+  <link rel="icon" href="./assets/icon.png">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./passage.css">
+  <script src="./passage.js" data-page="tv"></script>
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+</head>
+<body>
+  <main aria-label="視差之見电视" data-passage-surface>
+    <div class="installation" id="installation">
+      <div class="receiver" id="receiver">
+        <div id="still" aria-hidden="true"></div>
+        <canvas id="glass" aria-hidden="true"></canvas>
+        <a id="screen" class="screen-target" href="./next.html" data-passage aria-label="点击电视，进入下一页"></a>
+      </div>
+      <div class="controls" role="group" aria-label="电视遥控器">
+        <a data-action="play" href="./next.html" data-passage aria-label="播放并进入下一页" title="播放并进入下一页（空格）"><svg viewBox="0 0 20 20"><path d="m6.3 4.2 9 5.8-9 5.8z"/></svg></a>
+        <button data-action="power" type="button" aria-label="关机" title="关机（P）"><svg viewBox="0 0 20 20"><path d="M10 2.5v7m-3.7-5a6.5 6.5 0 1 0 7.4 0"/></svg></button>
+      </div>
+      <p id="status" class="visually-hidden" role="status"></p>
+    </div>
+  </main>
+  <script type="module" src="./tv-passage.js"></script>
+  <script type="module" src="./television.js"></script>
+</body>
+</html>

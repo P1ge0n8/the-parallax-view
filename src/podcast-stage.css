@@ -1,0 +1,143 @@
+.prx-podcast {
+  --prx-ink: var(--ink, #20231e);
+  --prx-rule: var(--line, #cccec3);
+  color: var(--prx-ink);
+  min-width: 0;
+}
+.prx-podcast [hidden] { display: none !important; }
+.prx-podcast button { appearance: none; font: inherit; color: inherit; cursor: pointer; border-radius: 0; }
+.prx-podcast :is(button, a, input):focus-visible { outline: 2px solid var(--accent, #882744); outline-offset: 4px; }
+.prx-stage { container-type: inline-size; }
+.prx-fan {
+  position: relative; overflow: hidden; isolation: isolate; height: clamp(190px, 39cqw, 306px);
+  touch-action: pan-y; user-select: none; -webkit-user-select: none;
+}
+.prx-card {
+  width: clamp(126px, 28cqw, 214px); aspect-ratio: 1; --jacket: #243c35; --print: #e4edb2;
+  position: absolute; top: 49%; left: 50%; padding: 0; margin: 0; border: none; background: transparent;
+  transform-origin: center; -webkit-tap-highlight-color: transparent;
+}
+.prx-card[data-series='focus'] { --jacket: #404e6d; --print: #f1deae; }
+.prx-card[data-series='cinemas'] { --jacket: #782f42; --print: #e6cfb0; }
+.prx-card[data-number='1'],.prx-card[data-number='2.1'] { --jacket: #cbb295; --print: #3d2734; }
+.prx-card[data-number='4.3'],.prx-card[data-number='5'] { --jacket: #303632; --print: #d9d3ba; }
+.prx-sleeve, .prx-vinyl, .prx-vinyl-label { display: block; position: absolute; }
+.prx-sleeve {
+  inset: 0; overflow: hidden; border-radius: 2px; background: var(--jacket); color: var(--print);
+  box-shadow: inset 0 0 0 1px #0002, 0 7px 12px -6px #28312270, 0 13px 28px -15px #1721147c;
+  transition: transform .28s ease-out; text-align: left;
+}
+.prx-sleeve::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(94deg, #0002, transparent 1%, #fff2 1.9%, transparent 3.8%, transparent 95%, #0001); box-shadow: inset 0 0 0 1px #0001; }
+.prx-original { display: block; width: 100%; height: 100%; object-fit: cover; }
+.prx-dog { position: absolute; inset: 20% 8% 11% 12%; background: url('../assets/station.webp') 5% 57% / 212% auto; mix-blend-mode: screen; opacity: .78; filter: grayscale(1) contrast(1.75); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+.prx-cover-number { position: absolute; right: 6%; top: 23%; font: 500 clamp(25px, 7.1cqw, 58px)/.85 Georgia,serif; letter-spacing: -.09em; }
+.prx-cover-brand { position: absolute; left: 7%; top: 6%; font: 650 clamp(10px, 2cqw, 16px)/1.2 var(--serif,Georgia,serif); letter-spacing: .04em; }
+.prx-cover-imprint { position: absolute; inset: auto 7% 5%; border-top: 1px solid currentColor; padding-top: 2%; font: 600 clamp(8px,1.3cqw,10px)/1 var(--mono,monospace); letter-spacing: .015em; }
+.prx-vinyl {
+  pointer-events: none; inset: 3%; border-radius: 50%; box-shadow: 0 3px 7px #0006;
+  background: repeating-radial-gradient(circle at center, transparent 0 1px, #ffffff16 1.2px 1.5px, transparent 1.9px 3px), conic-gradient(from 40deg,#111513, #4b4d46 12%, #171917 26%, #343733 33%, #161817 46%, #4c4e48 68%, #181a18 82%, #111513);
+  transition: transform .28s ease-out;
+}
+.prx-vinyl-label { inset: 34%; display: grid; place-items: center; border-radius: 50%; background: var(--jacket); border: 2px solid var(--print); color: var(--print); font: 500 clamp(8px,1.5cqw,13px)/1 var(--mono,monospace); }
+.prx-vinyl-label::after { position: absolute; content: ''; width: 9%; aspect-ratio: 1; border-radius: 50%; background: #171917; }
+.prx-card[data-selected='true'] .prx-vinyl-label { animation: prx-disc 1.81818s linear infinite; animation-play-state: paused; }
+@keyframes prx-disc { to { transform: rotate(-360deg); } }
+@media (hover:hover) { .prx-card[data-selected='true'][data-centered]:hover .prx-vinyl { transform: translateX(13%); } }
+.prx-podcast[data-playing='true'] .prx-card[data-selected='true'][data-centered] .prx-vinyl { transform: translateX(36%); }
+.prx-podcast[data-playing='true'] .prx-card[data-selected='true'][data-centered] .prx-sleeve { transform: translateX(-13%); }
+.prx-podcast[data-playing='true'] .prx-card[data-selected='true'] .prx-vinyl-label { animation-play-state: running; }
+.prx-toolbar { display: flex; justify-content: center; align-items: center; gap: 4px; padding: 0 0 7px; }
+.prx-step { display: grid; place-items: center; width: 35px; height: 34px; border: 0; padding: 6px; background: transparent; }
+.prx-toolbar button:hover { background: #2d3b2910; }
+.prx-toolbar svg { width: 14px; height: 14px; }
+.prx-position { font: 500 11px/1 var(--mono,monospace); letter-spacing: .04em; font-variant-numeric: tabular-nums; }
+.prx-selected { padding-block: clamp(17px,3vw,28px) 0; }
+.prx-meta { margin: 0 0 .6rem; color: var(--muted,#646a5e); font: 500 11px/1.5 var(--mono,monospace); }
+.prx-episode-title { margin: 0; max-width: 34em; font: 500 clamp(22px, 3vw, 34px)/1.28 var(--serif,Georgia,serif); letter-spacing: -.035em; text-wrap: pretty; }
+.prx-description { margin: 9px 0 0; max-width: 64ch; font: 400 14px/1.85 var(--sans,sans-serif); color: var(--muted,#646a5e); }
+.prx-actions { margin-top: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; }
+.prx-actions :is(button,a) { display: inline-flex; align-items: center; gap: 8px; min-height: 42px; font: 500 13px/1 var(--sans,sans-serif); }
+.prx-actions svg { width: 13px; height: 13px; }
+/* Original button motion: https://uiverse.io/barisdogansutcu/big-moose-69
+   Copyright (c) 2026 barisdogansutcu (Barış Doğan Sütçü). MIT License.
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE. */
+.prx-actions .prx-play {
+  padding: 0; min-height: 44px; border: 0; border-radius: 50px;
+  background: transparent; color: #70253d;
+  font: 550 14.5px/1 var(--sans,sans-serif); letter-spacing: .45px; text-transform: uppercase;
+  touch-action: manipulation; transition: transform .5s ease;
+}
+.prx-play-face {
+  position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: 4px;
+  height: 34px; padding: 0 13px 0 9px;
+  border: 1px solid var(--accent); border-radius: inherit; background: #e1e9df;
+}
+.prx-play-owl {
+  width: 30px; height: 30px; flex: none; object-fit: contain; object-position: center 3px;
+  pointer-events: none; transition: transform .5s ease;
+}
+.prx-play-label, .prx-play-invitation {
+  white-space: nowrap; transition: transform .5s ease;
+}
+.prx-play-label {
+  position: relative; display: grid; place-items: center; align-self: stretch;
+  font-weight: 500; line-height: 1.2; transition-delay: 300ms;
+}
+.prx-play-invitation { position: absolute; left: 0; z-index: 2; transform: translateX(-100%); }
+@media (prefers-reduced-motion: no-preference) {
+  .prx-play:is(:hover, :focus-visible) .prx-play-owl { transform: scale(3) translate(50%); }
+  .prx-play:is(:hover, :focus-visible) .prx-play-label { transform: translateX(200%); transition-delay: 35ms; }
+  .prx-play:is(:hover, :focus-visible) .prx-play-invitation {
+    transform: translateX(10px); transition-delay: 300ms;
+  }
+}
+.prx-actions .prx-play:active { transform: scale(.9); transition: transform 100ms ease; }
+.prx-external { color: var(--prx-ink); text-decoration: none; }
+.prx-external:hover { text-decoration: underline; text-underline-offset: .25em; }
+.prx-progress { display: flex; margin-top: 8px; align-items: center; gap: 12px; max-width: 420px; font: 500 11px/1 var(--mono,monospace); font-variant-numeric: tabular-nums; }
+.prx-progress input { min-width: 0; flex: 1; height: 28px; margin: 0; cursor: pointer; background: transparent; appearance: none; }
+.prx-progress input::-webkit-slider-runnable-track { height: 2px; background: linear-gradient(to right,var(--accent,#882744) var(--played,0%),var(--prx-rule) var(--played,0%)); }
+.prx-progress input::-webkit-slider-thumb { width: 9px; height: 9px; margin-top: -3.5px; border-radius: 50%; appearance: none; background: var(--accent,#882744); }
+.prx-progress input::-moz-range-track { height: 2px; background: var(--prx-rule); }
+.prx-progress input::-moz-range-progress, .prx-progress input::-moz-range-thumb { background: var(--accent,#882744); }
+.prx-status { margin: .4rem 0 0; color: var(--accent,#882744); font-size: 13px; }
+.prx-list-heading { margin: 32px 0 8px; font: 600 14px/1.4 var(--sans,sans-serif); }
+.prx-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--prx-rule); }
+.prx-list li { padding: 0; margin: 0; list-style: none; }
+.prx-row { display: grid; width: 100%; align-items: baseline; grid-template-columns: 55px minmax(0,1fr) auto; gap: 8px; padding: 12px 4px; text-align: start; background: transparent; border: 0; border-bottom: 1px solid var(--prx-rule); min-height: 44px; }
+.prx-row:hover, .prx-row[aria-current='true'] { background: #5d695008; }
+.prx-row[aria-current='true'] .prx-row-no { color: var(--accent,#882744); font-weight: 650; }
+.prx-row-no, .prx-row-duration { color: var(--muted,#646a5e); white-space: nowrap; font: 400 11px/1.4 var(--mono,monospace); }
+.prx-row-title { font: 400 14px/1.65 var(--sans,sans-serif); }
+.prx-row-no { display: inline-grid; grid-template-columns: 22px auto; gap: 3px; align-items: center; align-self: start; min-height: 23px; }
+.prx-index { grid-column: 2; }
+.prx-category-object { height: 23px; width: 22px; object-fit: contain; justify-self: center; }
+.prx-meta .prx-category-object { vertical-align: -.5em; margin-inline-end: 2px; }
+.prx-title-end { white-space: nowrap; }
+.prx-festival-mark { display: inline-block; width: auto; height: 1.35em; max-width: 2.45em; margin-inline-start: .45em; vertical-align: -.26em; object-fit: contain; }
+.prx-row-title .prx-festival-mark[src$="berlin.svg"] { height: 1.5em; vertical-align: -.35em; }
+.prx-episode-title .prx-festival-mark { height: .8em; max-width: 1.3em; vertical-align: -.035em; }
+@media (max-width: 500px) {
+  .prx-row { grid-template-columns: 49px minmax(0,1fr) auto; gap: 6px; }
+  .prx-step { min-height: 40px; }
+  .prx-toolbar { padding-block: 0 3px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .prx-podcast *, .prx-podcast *::after { animation: none !important; transition: none !important; }
+  .prx-actions .prx-play:active { transform: none; }
+  .prx-card[data-selected='true'][data-centered]:hover .prx-vinyl { transform: none; }
+}

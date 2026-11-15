@@ -1,0 +1,30 @@
+/* Only the reading column moves. Each sheet clips its own long content
+   so adjacent sections meet along a single moving edge. */
+#publication[data-sliding] {
+  position: relative;
+  height: var(--section-window);
+  overflow: clip;
+  isolation: isolate;
+  overflow-anchor: none;
+}
+#publication[data-sliding] > .page {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  will-change: transform;
+}
+
+/* The copy dissolves together. Artwork, the moving rail and the audio element stay in place. */
+@property --copy-opacity {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 1;
+}
+.spread { --copy-opacity: 1; }
+.spread :where(
+  .rail-toc-title, .rail-toc-label, .return-tv span, .section-head,
+  .statement, .about-copy, .contributors,
+  .prx-meta, .prx-episode-title, .prx-description, .prx-play-label, .prx-play-invitation,
+  .prx-external span, .prx-status, .prx-list-heading, .prx-row-title, .prx-row-duration,
+  .contact-intro
+) { opacity: var(--copy-opacity); }

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>視差之見 · 节目与文章</title>
+  <link rel="icon" href="./assets/icon.png">
+  <link rel="preload" href="./assets/fonts/geist-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./src/rail-track.css">
+  <link rel="stylesheet" href="./src/rail-view.css">
+  <link rel="stylesheet" href="./src/rail-editor.css">
+  <link rel="stylesheet" href="./reading.css">
+  <link rel="stylesheet" href="./passage.css">
+  <script src="./passage.js" data-page="directory"></script>
+</head>
+<body data-passage-surface>
+  <header class="page-head"><div class="page-head-inner">
+    <a href="./" class="masthead" data-passage aria-label="視差之見电视首页">
+      <img src="./assets/station.webp" width="804" height="797" alt="視差之見">
+    </a>
+    <nav class="page-tools" aria-label="页面工具">
+      <a href="./" class="tv-back" data-passage>电视</a>
+      <button id="edit-open" type="button" aria-expanded="false" aria-controls="editor-drawer">编辑目录</button>
+      <details class="download"><summary>导出 <svg viewBox="0 0 12 12" aria-hidden="true"><path d="m3 4.6 3 3 3-3"/></svg></summary>
+        <div class="download-menu"><button type="button" data-download="html">独立网页 <span>HTML</span></button><button type="button" data-download="json">目录配置 <span>JSON</span></button></div>
+      </details>
+    </nav>
+  </div></header>
+  <main class="doc-layout">
+    <aside class="contents"><div id="rail-host"></div>
+      <div class="playback" role="group" aria-label="目录动画">
+        <button id="demo" aria-label="演示往返移动" title="演示往返移动" type="button"><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m5.2 3.5 7 4.5-7 4.5z"/></svg></button>
+        <button id="pause" aria-label="暂停动画" title="暂停动画" aria-pressed="false" type="button"><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M5.5 4v8m5-8v8"/></svg></button>
+        <select id="speed" aria-label="观察倍速" title="观察倍速"><option value=".5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select>
+      </div>
+    </aside>
+    <div class="introduction">
+      <div class="kicker" lang="en">The Parallax View</div>
+      <h1>视线有偏差，电影有回声。</h1>
+      <p>红酒与新元的电影播客。从戛纳和柏林的放映现场，到院线银幕上的《F1》和《至尊马蒂》。</p>
+    </div>
+    <div class="article-panel">
+      <div class="article-tools"><span class="mono-label">节目与文章</span>
+        <label class="switch-label"><input id="link-reading" type="checkbox" role="switch"><span class="switch-track" aria-hidden="true"></span>联动阅读</label>
+      </div>
+      <div id="reader-host"></div>
+
+    </div>
+    <aside id="editor-drawer" aria-label="目录编辑器" hidden>
+      <div class="editor-heading"><h2>编辑目录</h2><button id="edit-close" type="button" aria-label="关闭编辑器">×</button></div>
+      <div id="editor-host"></div>
+    </aside>
+  </main>
+  <p id="notice" role="status" aria-live="polite"></p>
+  <script type="module" src="./reading.js"></script>
+</body>
+</html>

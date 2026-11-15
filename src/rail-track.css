@@ -1,0 +1,68 @@
+.rail-toc {
+  --rail-accent: #333333;
+  --rail-paper: #ffffff;
+  color: var(--rail-accent);
+  min-width: 0;
+  text-align: left;
+  font-family: inherit;
+}
+.rail-toc-title {
+  display: flex; align-items: center; gap: 9px;
+  margin: 0 0 13px;
+  color: inherit;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.rail-toc-title-icon { flex: none; width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.4; }
+.rail-toc-stage { position: relative; isolation: isolate; }
+.rail-toc-list { list-style: none; margin: 0; padding: 0; }
+.rail-toc-list > li { margin: 0; padding: 0; }
+.rail-toc .rail-toc-row {
+  appearance: none;
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  min-height: 34px;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0 2px 0 calc(2px + var(--rail-level, 0) * 14px);
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: color-mix(in srgb, var(--rail-accent) 70%, var(--rail-paper));
+  font: inherit;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: inherit;
+  text-align: left;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.rail-toc .rail-toc-row:hover, .rail-toc .rail-toc-row[aria-current] { color: var(--rail-accent); }
+.rail-toc .rail-toc-row[aria-current] { font-weight: 550; }
+.rail-toc .rail-toc-row:focus-visible { outline: 1px solid currentColor; outline-offset: 1px; }
+.rail-toc-anchor { flex: 0 0 16px; height: 16px; }
+.rail-toc-label { overflow-wrap: anywhere; }
+.rail-toc-track {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+.rail-toc-guide, .rail-toc-ink {
+  fill: none;
+  stroke: var(--rail-accent);
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.rail-toc-guide { opacity: .42; stroke-dasharray: 2 4; }
+.rail-toc-node { fill: var(--rail-paper); stroke: var(--rail-accent); stroke-width: 1; }
+.rail-toc-node[data-read] { fill: var(--rail-accent); }
+.rail-toc-plane { stroke: var(--rail-accent); stroke-width: .8; stroke-linejoin: round; }
+.rail-toc-wing { fill: var(--rail-accent); }
